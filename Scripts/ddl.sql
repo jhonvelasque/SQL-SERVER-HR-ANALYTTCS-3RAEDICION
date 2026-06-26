@@ -4,7 +4,9 @@ GO
 
 USE BD_HR_3RA ;
 GO
-
+--> ddl -->create  
+--> dml -->alter , inser into , ctas 
+--> dql --> select , join , group by , order by
 ---------------------------------
 -- CARGA EMPLEADOS
 ---------------------------------
@@ -45,7 +47,7 @@ WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,           -- Ignora el encabezado del CSV
     FIELDTERMINATOR = ',',  -- Cambia por ';' si tu CSV usa punto y coma
-    ROWTERMINATOR = '\n' -- Salto de línea estándar (LF) o '\n'
+    ROWTERMINATOR = '\n' -- Salto de lï¿½nea estï¿½ndar (LF) o '\n'
    -- ENCODING = 'UTF-8'      -- Importante si tienes acentos o tildes
  
 );
@@ -75,7 +77,7 @@ WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,           -- Ignora el encabezado del CSV
     FIELDTERMINATOR = ',',  -- Cambia por ';' si tu CSV usa punto y coma
-    ROWTERMINATOR = '\n' -- Salto de línea estándar (LF) o '\n'
+    ROWTERMINATOR = '\n' -- Salto de lï¿½nea estï¿½ndar (LF) o '\n'
        -- Importante si tienes acentos o tildes
  
 );
