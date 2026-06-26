@@ -38,6 +38,7 @@ CREATE TABLE dbo.Employee (
 );
 
 -- IMPORTANDO DATOS DE CSV
+
 BULK INSERT Employee
 FROM 'C:\HOME LOCAL\SQL-SERVER-HR-ANALYTTCS-3RAEDICION\Data\Employee.csv' -- Reemplaza con la ruta real
 WITH (
@@ -48,5 +49,37 @@ WITH (
    -- ENCODING = 'UTF-8'      -- Importante si tienes acentos o tildes
  
 );
+------------------------------
+-- CARGANDO PerformanceRating
+-----------------------------
+IF OBJECT_ID('PerformanceRating', 'U') IS NOT NULL
+    DROP TABLE PerformanceRating;
+-- Crear la tabla con tipos de datos adecuados
+CREATE TABLE PerformanceRating (
+    PerformanceID                 NVARCHAR(20) PRIMARY KEY, -- Ej: 'PR01'
+    EmployeeID                    NVARCHAR(50),             -- Debe coincidir con el formato de tu otra tabla
+    ReviewDate                    DATE,                     -- SQL Server maneja formato YYYY-MM-DD
+    EnvironmentSatisfaction       INT,
+    JobSatisfaction               INT,
+    RelationshipSatisfaction      INT,
+    TrainingOpportunitiesWithinYear INT,
+    TrainingOpportunitiesTaken    INT,
+    WorkLifeBalance               INT,
+    SelfRating                    INT,
+    ManagerRating                 INT
+);
+
+BULK INSERT PerformanceRating
+FROM 'C:\HOME LOCAL\SQL-SERVER-HR-ANALYTTCS-3RAEDICION\Data\PerformanceRating.csv' -- Reemplaza con la ruta real
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,           -- Ignora el encabezado del CSV
+    FIELDTERMINATOR = ',',  -- Cambia por ';' si tu CSV usa punto y coma
+    ROWTERMINATOR = '\n' -- Salto de línea estándar (LF) o '\n'
+       -- Importante si tienes acentos o tildes
+ 
+);
 
 
+SELECT *
+FROM PerformanceRating
